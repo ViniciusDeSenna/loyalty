@@ -24,14 +24,15 @@
                   <img src="{{asset('theme_assets\Modernize-bootstrap-free-main\Modernize-bootstrap-free-main\src\assets\images\logos\dark-logo.svg')}}" width="180" alt="">
                 </a>
                 <p class="text-center">Seu site de fidelidade</p>
-                <form id="form-login">
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Username</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
                   </div>
                     <div class="mb-4">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <input type="password" class="form-control" id="password" name="password">
                     </div>
                     <div class="my-5">
                         <div class="row d-flex justify-content-center">
@@ -48,7 +49,7 @@
                     </div>
                     <a class="text-primary fw-bold" href="./index.html">Forgot Password ?</a>
                   </div>
-                  <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</a>
+                  <button type="submit" class="btn btn-primary py-8 fs-4 mb-4 rounded-2">Sign In</a>
                   <div class="d-flex align-items-center justify-content-center">
                     <p class="fs-4 mb-0 fw-bold">Novo por aqui?</p>
                     <a class="text-primary fw-bold ms-2" href="./authentication-register.html">Create an account</a>
@@ -64,18 +65,6 @@
   <script src="{{asset('theme_assets\Modernize-bootstrap-free-main\Modernize-bootstrap-free-main\src\assets\libs\jquery\dist\jquery.min.js')}}"></script>
   <script src="{{asset('theme_assets\Modernize-bootstrap-free-main\Modernize-bootstrap-free-main\src\assets\libs\bootstrap\dist\js\bootstrap.bundle.min.js')}}"></script>
   <script>
-    function login(){
-        $('#form-login').serialize();
-        $.ajax({
-            type: 'post',
-            url: '{{route("login")}}',
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            .success(function (){
-                
-            },
-        })
-    };
   </script>
 </body>
 
