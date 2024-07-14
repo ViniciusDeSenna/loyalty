@@ -1,3 +1,14 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modernize Free</title>
+  <link rel="shortcut icon" type="image/png" href="{{asset('theme_assets\Modernize-bootstrap-free-main\Modernize-bootstrap-free-main\src\assets\images\logos\favicon.png')}}" />
+  <link rel="stylesheet" href="{{asset('theme_assets\Modernize-bootstrap-free-main\Modernize-bootstrap-free-main\src\assets\css\styles.min.css')}}" />
+</head>
+
 <body>
   <!--  Body Wrapper -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
@@ -27,12 +38,32 @@
                     <label for="exampleInputPassword1" class="form-label">Senha</label>
                     <input type="password" class="form-control" id="password" name="password">
                   </div>
-                  <div class="mb-4">
-                    <label for="exampleInputPassword1" class="form-label">COnfirmar Senha</label>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Confirmar Senha</label>
                     <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
                   </div>
+                  <!-- Seleciona tipo -->
+                   <div class="mb-4">
+                    <label for="type" class="form-label">Como você pretende usar nosso site?</label>
+                    <select name="type" id="type" class="form-select mb-3" onchange="formEstab()">
+                      <option value="null" disabled selected>Selecione</option>
+                      <option value="USER">Sou Cliente</option>
+                      <option value="ESTABLISHMENT">Sou Estabelecimento</option>
+                    </select>
+                    <!-- Formulario registro de empresa -->
+                    <div id="form-registro-estabelecimento" class="d-none">
+                      <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Nome do seu Estabelecimento</label>
+                        <input type="text" class="form-control" id="nome" name="nome">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">CNPJ do seu Estabelecimento</label>
+                        <input type="number" class="form-control" id="cnpj" name="cnpj">
+                      </div>
+                    </div>
+                  </div>
                   <div>
-                  <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign Up</a>
+                    <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Criar Conta</button>
                   </div>
                   <div class="d-flex align-items-center justify-content-center">
                     <p class="fs-4 mb-0 fw-bold">Already have an Account?</p>
@@ -49,6 +80,19 @@
   <script src="{{asset('theme_assets\Modernize-bootstrap-free-main\Modernize-bootstrap-free-main\src\assets\libs\jquery\dist\jquery.min.js')}}"></script>
   <script src="{{asset('theme_assets\Modernize-bootstrap-free-main\Modernize-bootstrap-free-main\src\assets\libs\bootstrap\dist\js\bootstrap.bundle.min.js')}}"></script>
   <script>
+    $(function(){
+      formEstab();
+    });
+
+    function formEstab() {
+      if ($('#type').val() === 'ESTABLISHMENT'){
+        $('#form-registro-estabelecimento').removeClass('d-none');
+        $('#form-registro-estabelecimento').slideDown();
+      } else {
+        $('#form-registro-estabelecimento').addClass('d-none');
+        $('#form-registro-estabelecimento').slideUp();
+      }
+    }
   </script>
 </body>
 
