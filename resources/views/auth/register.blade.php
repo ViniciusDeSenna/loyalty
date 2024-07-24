@@ -27,7 +27,7 @@
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
                     <div class="mb-3">
-                    <label for="exampleInputtext1" class="form-label">Nome</label>
+                    <label for="exampleInputtext1" class="form-label">Nome completo</label>
                     <input type="text" class="form-control" id="name" name="name" aria-describedby="textHelp">
                   </div>
                   <div class="mb-3">
@@ -58,7 +58,7 @@
                       </div>
                       <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">CNPJ do seu Estabelecimento</label>
-                        <input type="number" class="form-control" id="cnpj" name="cnpj">
+                        <input type="text" class="form-control" id="cnpj" name="cnpj">
                       </div>
                     </div>
                   </div>
