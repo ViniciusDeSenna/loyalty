@@ -14,11 +14,6 @@ use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
-    public function index(): View
-    {
-        return view('auth.escolha-registro');
-    }
-
     /**
      * Display the registration view.
      */
