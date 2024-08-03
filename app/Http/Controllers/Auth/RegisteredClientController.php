@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -19,7 +20,8 @@ class RegisteredClientController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
+        dd($request);
     }
 }

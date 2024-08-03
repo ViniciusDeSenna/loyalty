@@ -22,8 +22,8 @@ Route::middleware('guest')->group(function () {
     Route::get('register/cliente', [RegisteredClientController::class, 'create'])
                 ->name('register.cliente');
 
-    Route::post('egister/cliente', [RegisteredClientController::class, 'store']);
-
+    Route::post('register/cliente', [RegisteredClientController::class, 'store']);
+    
     Route::get('register/estabelecimento', [RegisteredEstabController::class, 'create'])
                 ->name('register.estabelecimento');
 

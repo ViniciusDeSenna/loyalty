@@ -16,7 +16,9 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "ajax": "^0.0.4",
         "html5-qrcode": "^2.3.8",
+        "jquery": "^3.7.1",
         "qrcode": "^1.5.3"
     },
     "name": "loyalty",
