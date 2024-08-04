@@ -146,16 +146,16 @@
                 <form id="form-login-cliente" role="form text-left">
                   @csrf
                   <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Nome completo" aria-label="Nome completo" name="nome-completo" aria-describedby="email-addon">
+                    <input type="text" class="form-control" placeholder="Nome completo" aria-label="Nome completo" name="name" aria-describedby="email-addon">
                   </div>
                   <div class="mb-3">
                     <input type="email" class="form-control" placeholder="Email" aria-label="Email" name="email" aria-describedby="email-addon">
                   </div>
                   <div class="mb-3">
-                    <input type="password" class="form-control" placeholder="Senha" aria-label="Senha" name="senha" aria-describedby="password-addon">
+                    <input type="password" class="form-control" placeholder="Senha" aria-label="Senha" name="password" aria-describedby="password-addon">
                   </div>
                   <div class="mb-3">
-                    <input type="password" class="form-control" placeholder="Confirme sua senha" aria-label="Confirme sua senha" name="senha" aria-describedby="password-addon">
+                    <input type="password" class="form-control" placeholder="Confirme sua senha" aria-label="Confirme sua senha" name="password" aria-describedby="password-addon">
                   </div>
                   <div class="form-check form-check-info text-left">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
@@ -178,16 +178,6 @@
   </main>
   <script src=" https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js "></script>
   <script>
-    $(document).ready(function() {
-      $.ajaxSetup({
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-      });
-    });
-
-    console.log("Token CSRF:", $('meta[name="csrf-token"]').attr('content')); // Verifica o token no console
-
     function cadastrarCliente() {
       let data = $('#form-login-cliente').serialize();
 
@@ -195,11 +185,14 @@
         type: 'POST',
         url: '{{ route("register.cliente") }}',
         data: data,
-        success: function(returnData) {
-          console.log('Sucesso:', returnData);
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        error: function(xhr, status, error) {
-          console.log('Erro:', xhr.responseText);
+        success: function(data) {
+          console.log('Sucesso:', data);
+        },
+        error: function(data) {
+          console.log(data);
         }
       });
     }
