@@ -155,7 +155,7 @@
                     <input type="password" class="form-control" placeholder="Senha" aria-label="Senha" name="password" aria-describedby="password-addon">
                   </div>
                   <div class="mb-3">
-                    <input type="password" class="form-control" placeholder="Confirme sua senha" aria-label="Confirme sua senha" name="password" aria-describedby="password-addon">
+                    <input type="password" class="form-control" placeholder="Confirme sua senha" aria-label="Confirme sua senha" name="password_confirmed" aria-describedby="password-addon">
                   </div>
                   <div class="form-check form-check-info text-left">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
