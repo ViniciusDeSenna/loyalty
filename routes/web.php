@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmpresasController;
+use App\Http\Controllers\EmpresasConfigController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,6 +17,8 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     /* Rotas Minha Empresa */
     Route::get('/minha-empresa', [EmpresasController::class, 'index'])->name('minha-empresa.index');
+    
+    Route::get('/minha-empresa/config', [EmpresasConfigController::class, 'index'])->name('minha-empresa-config.index');
 
 });
 

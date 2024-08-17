@@ -1,14 +1,15 @@
 @extends('dashboard')
+
 @section('main-content')
 <div class="container-fluid">
-    <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url({{asset('tema/assets/img/curved-images/curved0.jpg')}}); background-position-y: 50%;">
+    <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url(https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/1e/8b/16/oliv-restaurante.jpg?w=600&h=400&s=1); background-position-y: 50%;">
         <span class="mask bg-gradient-primary opacity-6"></span>
     </div>
     <div class="card card-body blur shadow-blur mx-4 mt-n6 mb-4 overflow-hidden">
         <div class="row gx-4">
             <div class="col-auto">
                 <div class="avatar avatar-xl position-relative">
-                    <img src="{{asset('tema/assets/img/bruce-mars.jpg')}}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                    <img src="https://marketplace.canva.com/EAFuRCowrBE/1/0/1600w/canva-logotipo-para-restaurante-moderno-laranja-marrom-M2uDDAK9eXw.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
                 </div>
             </div>
             <div class="col-auto my-auto">
@@ -21,7 +22,7 @@
                 <div class="nav-wrapper position-relative end-0">
                     <ul class="nav nav-pills nav-fill p-1 bg-transparent flex-column on-resize" role="tablist">
                         <li class="nav-item my-2" role="presentation">
-                            <button type="button" class="btn btn-sm mb-0 w-100">
+                            <button type="button" class="btn btn-sm mb-0 w-100" onclick="openConfig()">
                                 <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <title>settings</title>
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -47,7 +48,6 @@
                                 <button type="button" class="btn btn-sm bg-gradient-primary mb-0 w-100"><i class="fas fa-plus pe-2"></i> Follow</button>
                             </a>
                         </li>
-                        <div class="moving-tab position-absolute nav-link" style="padding: 0px; transition: 0.5s; transform: translate3d(0px, 0px, 0px); width: 401px;"><a class="nav-link mb-0 px-0 py-1 active " data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="true">-</a></div>
                     </ul>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                     <div class="card card-blog card-plain">
                         <div class="position-relative">
                             <a class="d-block shadow-xl border-radius-xl">
-                                <img src="{{asset('tema/assets/img/home-decor-1.jpg')}}" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
+                                <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/1e/8b/16/oliv-restaurante.jpg?w=600&h=400&s=1" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
                             </a>
                         </div>
                         <div class="card-body px-1 pb-0">
@@ -82,4 +82,9 @@
         </div>
     </div>
 </div>
+<script>
+    function openConfig(){
+        window.location.assign("{{route('minha-empresa-config.index')}}")
+    }
+</script>
 @endsection
