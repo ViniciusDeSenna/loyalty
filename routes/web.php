@@ -17,8 +17,9 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     /* Rotas Minha Empresa */
     Route::get('/minha-empresa', [EmpresasController::class, 'index'])->name('minha-empresa.index');
-    
     Route::get('/minha-empresa/config', [EmpresasConfigController::class, 'index'])->name('minha-empresa-config.index');
+
+    Route::post('/minha-empresa/config/store', [EmpresasConfigController::class, 'store'])->name('minha-empresa-config.store');
 
 });
 
