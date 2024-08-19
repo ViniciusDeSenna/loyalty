@@ -8,6 +8,7 @@ class User extends Authenticatable
 {
     protected $connection = 'mongodb';
     protected $collection = 'users';
+    protected $primaryKey = '_id';
 
     protected $fillable = [
         'name',
