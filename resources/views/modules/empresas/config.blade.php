@@ -1,6 +1,22 @@
 @extends('dashboard')
 
 @section('main-content')
+<div class="container fixed-top mt-4 d-none" id="modal-save">
+    <div class="card card-body">
+        <div class="row">
+        <div class="col-12">
+            <p class="mb-0"><strong>Alterações foram realizadas!</strong></p>
+        </div>
+        <div class="col-6">
+            <button class="btn btn-sm btn-outline-primary mt-3 mb-0 w-100" onclick="cancelarAlteracoes()">Cancelar</button>
+        </div>
+        <div class="col-6">
+            <button class="btn btn-sm bg-gradient-primary mt-3 mb-0 w-100" onclick="salvarAlteracoes()"> Salvar</button>
+        </div>
+        </div>
+    </div>
+</div>
+
 <div class="container-fluid my-3 py-3">
     <div class="row mb-5">
         <div class="col-lg-3">
@@ -125,18 +141,23 @@
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
-        $(document).ready(function() {
-            // Função que será chamada quando qualquer evento ocorrer
-            function handleEvent() {
-                console.log('Evento detectado!');
-                // Adicione aqui o que você quer que aconteça
-            }
+    function salvarAlteracoes(){
 
-            // Adiciona o evento click a todos os botões
-            $('button').click(handleEvent);
+    }
+    function salvarAlteracoes(){
 
-            // Adiciona o evento change a todos os inputs e selects
-            $('input, select').change(handleEvent);
-        });
-    </script>
+    }
+    $(document).ready(function() {
+        // Função que será chamada quando qualquer evento ocorrer
+        function handleEvent() {
+            $('#modal-save').removeClass('d-none');
+        }
+
+        // Adiciona o evento click a todos os botões
+        $('button').click(handleEvent);
+
+        // Adiciona o evento change a todos os inputs e selects
+        $('input, select').change(handleEvent);
+    });
+</script>
 @endsection
