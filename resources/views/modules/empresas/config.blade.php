@@ -122,4 +122,21 @@
         </div>
     </div>
 </div>
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+        $(document).ready(function() {
+            // Função que será chamada quando qualquer evento ocorrer
+            function handleEvent() {
+                console.log('Evento detectado!');
+                // Adicione aqui o que você quer que aconteça
+            }
+
+            // Adiciona o evento click a todos os botões
+            $('button').click(handleEvent);
+
+            // Adiciona o evento change a todos os inputs e selects
+            $('input, select').change(handleEvent);
+        });
+    </script>
 @endsection

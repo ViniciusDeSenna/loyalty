@@ -12,4 +12,4 @@
 
 <!-- Footer -->
 @include('layouts.footer-web')
-<!-- End Footer -->
+<!-- End -->
