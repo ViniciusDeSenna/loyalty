@@ -8,7 +8,7 @@
             <p class="mb-0"><strong>Alterações foram realizadas!</strong></p>
         </div>
         <div class="col-6">
-            <button class="btn btn-sm btn-outline-primary mt-3 mb-0 w-100" onclick="cancelarAlteracoes()">Cancelar</button>
+            <button class="btn btn-sm btn-outline-danger mt-3 mb-0 w-100" onclick="cancelarAlteracoes()">Cancelar</button>
         </div>
         <div class="col-6">
             <button class="btn btn-sm bg-gradient-primary mt-3 mb-0 w-100" onclick="salvarAlteracoes()"> Salvar</button>
@@ -17,7 +17,7 @@
     </div>
 </div>
 
-<div class="container-fluid my-3 py-3">
+<form class="container-fluid my-3 py-3" id="config-form">
     <div class="row mb-5">
         <div class="col-lg-3">
             <div class="card position-sticky top-1">
@@ -137,7 +137,7 @@
             </div>
         </div>
     </div>
-</div>
+</form>
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
@@ -145,11 +145,25 @@
 
     }
     function salvarAlteracoes(){
-
+        $.ajax({
+            type: 'POST',
+            url: '{{ route('minha-empresa-config.store') }}',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "dados": $('#config-form').serialize()
+            },
+            success: function(retorno) {
+                console.log(retorno);
+            },
+            error: function(retorno) {
+                console.log(retorno);
+            }
+        });
     }
     $(document).ready(function() {
         // Função que será chamada quando qualquer evento ocorrer
         function handleEvent() {
+            console.log('teste');
             $('#modal-save').removeClass('d-none');
         }
 
