@@ -129,7 +129,7 @@
                     </div>
                     <div class="mt-3">
                             <div class="input-group">
-                                <button class="btn btn-outline-secondary btn-sm float-end mt-1 w-100 mb-0"><strong>Novo Prêmio</strong></button>
+                                <button class="btn btn-outline-secondary btn-sm float-end mt-1 w-100 mb-0" onclick="novoPremio()"><strong>Novo Prêmio</strong></button>
                             </div>
                         </div>
                     </div>
@@ -141,16 +141,20 @@
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
-    function salvarAlteracoes(){
+    function novoPremio(){
 
     }
+    function cancelarAlteracoes(){
+        window.location.assign("{{route('minha-empresa-config.index')}}")
+    }
     function salvarAlteracoes(){
+        let dados = $('#config-form').serialize();
         $.ajax({
             type: 'POST',
             url: '{{ route('minha-empresa-config.store') }}',
             data: {
                 "_token": "{{ csrf_token() }}",
-                "dados": $('#config-form').serialize()
+                "dados": dados,
             },
             success: function(retorno) {
                 console.log(retorno);
