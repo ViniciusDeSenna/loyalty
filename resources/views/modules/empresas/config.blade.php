@@ -18,6 +18,7 @@
 </div>
 
 <form class="container-fluid my-3 py-3" id="config-form">
+    <input type="hidden" name="_id">
     <div class="row mb-5">
         <div class="col-lg-3">
             <div class="card position-sticky top-1">
@@ -103,33 +104,10 @@
                     <h5>Cartão</h5>
                 </div>
                 <div class="card-body pt-0">
-                    <h7>Prêmios</h7>
                     <div class="row">
-                        <div class="col-12">
-                            <label class="form-label">Pontos necessarios: 1</label>
+                        <div class="col-3 mt-3">
                             <div class="input-group">
-                                <input id="firstName" name="firstName" class="form-control" type="text" placeholder="Premiação" required="required" onfocus="focused(this)" onfocusout="defocused(this)">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="input-group">
-                                <button class="btn bg-gradient-danger btn-sm float-end mt-1 w-100 mb-0"><strong>-</strong></button>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="input-group">
-                                <button class="btn bg-gradient-dark btn-sm float-end mt-1 w-100 mb-0"><strong>-</strong></button>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="input-group">
-                                <button class="btn bg-gradient-primary btn-sm float-end mt-1 w-100 mb-0"><strong>+</strong></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-3">
-                            <div class="input-group">
-                                <button class="btn btn-outline-secondary btn-sm float-end mt-1 w-100 mb-0" onclick="novoPremio()"><strong>Novo Prêmio</strong></button>
+                                <button class="btn btn-lg btn-icon-only btn-rounded btn-outline-primary mb-0" onclick="novoPremio()"><strong>1</strong></button>
                             </div>
                         </div>
                     </div>
@@ -141,6 +119,22 @@
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
+    function carregaDados(){
+        $.ajax({
+            type: 'GET',
+            url: '{{ route('minha-empresa-config.show', [Auth::user()->id]) }}',
+            data: {"_token": "{{ csrf_token() }}"},
+            success: function(retorno) {
+                console.log(retorno);
+            },
+            error: function(retorno) {
+                console.log(retorno);
+            }
+        })
+    }
+    function carregaCartao(){
+
+    }
     function novoPremio(){
 
     }
@@ -176,6 +170,8 @@
 
         // Adiciona o evento change a todos os inputs e selects
         $('input, select').change(handleEvent);
+
+        carregaDados();
     });
 </script>
 @endsection
