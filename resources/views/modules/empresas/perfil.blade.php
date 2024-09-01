@@ -37,7 +37,7 @@
                                     </g>
                                 </g>
                             </g>
-                        </svg>    
+                        </svg>
                         Configurar Empresa
                     </button>
                     <button type="button" class="btn btn-sm bg-gradient-primary mt-3 mb-0 w-100"><i class="fas fa-plus pe-2"></i> Follow</button>
@@ -45,13 +45,13 @@
             </div>
         </div>
     </div>
-    <div class="card blur shadow-blur mx-4 mb-4 overflow-hidden">
-        <div class="card-header pb-0 p-3">
-            <h6 class="mb-1">Cartão</h6>
-        </div>
-        <div class="card-body p-3">
+    <h6 class="my-2">Cartões</h6>
+
+
             <div class="row">
-                <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                <div class="col-xl-6 col-md-7 mb-xl-0 mb-4">
+                    <div class="card blur shadow-blur">
+                        <div class="card-body">
                     <div class="card card-blog card-plain">
                         <div class="position-relative">
                             <a class="d-block shadow-xl border-radius-xl">
@@ -59,15 +59,23 @@
                             </a>
                         </div>
                         <div class="card-body px-1 pb-0">
-                            <a href="javascript:;">
-                                <h5>Seus pontos: 2</h5>
-                            </a>
-                            <p class="mb-4 text-sm">Ultima marcação: 12/08/2024</p>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <button type="button" class="btn btn-outline-primary btn-sm mb-0">Beneficios</button>
-                                <button type="button" class="btn btn-outline-primary btn-sm mb-0">Marcar</button>
+                            <div class="row align-items-center">
+                                <div class="col-9 d-flex align-items-center">
+                                    <a href="javascript:;">
+                                        <h5 class="mb-0 text-break">NOME DA EMPRESA</h5>
+                                    </a>
+                                </div>
+                                <div class="col-3 d-flex justify-content-center">
+                                    <div class="input-group">
+                                        <button class="btn btn-lg btn-icon-only btn-rounded btn-outline-primary mb-0" onclick="novoPremio()">
+                                            <strong>1</strong>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
