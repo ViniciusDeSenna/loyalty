@@ -7,13 +7,13 @@
             <input class="form-control form-control-alternative" placeholder="Search" type="text">
         </div>
         <ul class="justify-content-end">
-            <li class="nav-item d-xl-none ps-3 d-flex align-items-center mt-3">
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                 <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
-                <div class="sidenav-toggler-inner">
-                    <i class="sidenav-toggler-line"></i>
-                    <i class="sidenav-toggler-line"></i>
-                    <i class="sidenav-toggler-line"></i>
-                </div>
+                    <div class="sidenav-toggler-inner">
+                        <i class="sidenav-toggler-line"></i>
+                        <i class="sidenav-toggler-line"></i>
+                        <i class="sidenav-toggler-line"></i>
+                    </div>
                 </a>
             </li>
         </ul>
