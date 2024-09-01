@@ -45,9 +45,9 @@
             </div>
         </div>
     </div>
-    <div class="card">
+    <div class="card mb-2">
         <div class="card-body p-3">
-            <div class="row">
+            <div class="row d-flex align-items-center">
                 <div class="col-8">
                     <div class="numbers">
                         <h5 class="font-weight-bolder mb-0">
