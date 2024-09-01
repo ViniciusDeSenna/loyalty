@@ -31,8 +31,3 @@
         </div>
       </footer>
     </div>
-  </main>
-  @include('layouts.scripts')
-</body>
-
-</html>
