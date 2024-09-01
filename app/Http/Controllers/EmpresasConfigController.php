@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Empresas;
 
 class EmpresasConfigController extends Controller
 {
@@ -36,7 +37,11 @@ class EmpresasConfigController extends Controller
      */
     public function show(string $id)
     {
-        dd($id);
+        $empresa = Empresas::query()
+            ->where('_id', '=', $id)
+            ->get();
+
+            dd($empresa);
     }
 
     /**
