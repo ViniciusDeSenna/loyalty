@@ -98,7 +98,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-9 mt-lg-0 mt-4">
+        <div class="col-lg-9 mt-lg-0 mt-2">
             <div class="card mt-4" id="basic-info">
                 <div class="card-header">
                     <h5>Cartão</h5>

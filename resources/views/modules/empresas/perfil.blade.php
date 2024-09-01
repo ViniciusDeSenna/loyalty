@@ -40,42 +40,53 @@
                         </svg>
                         Configurar Empresa
                     </button>
-                    <button type="button" class="btn btn-sm bg-gradient-primary mt-3 mb-0 w-100"><i class="fas fa-plus pe-2"></i> Follow</button>
+                    <button type="button" class="btn btn-sm bg-gradient-primary mt-3 mb-0 w-100"><i class="fas fa-plus pe-2"></i>Seguir</button>
                 </div>
             </div>
         </div>
     </div>
-    <h6 class="my-2">Cartões</h6>
-
-
+    <div class="card">
+        <div class="card-body p-3">
             <div class="row">
-                <div class="col-xl-6 col-md-7 mb-xl-0 mb-4">
-                    <div class="card blur shadow-blur">
-                        <div class="card-body">
-                    <div class="card card-blog card-plain">
-                        <div class="position-relative">
-                            <a class="d-block shadow-xl border-radius-xl">
-                                <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/1e/8b/16/oliv-restaurante.jpg?w=600&h=400&s=1" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
+                <div class="col-8">
+                    <div class="numbers">
+                        <h5 class="font-weight-bolder mb-0">
+                            Cartões
+                        </h5>
+                    </div>
+                </div>
+                <div class="col-4 text-end">
+                    <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                        <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-6 col-md-7 mb-xl-0 mb-4">
+            <div class="card blur shadow-blur">
+                <div class="card-body">
+            <div class="card card-blog card-plain">
+                <div class="position-relative">
+                    <a class="d-block shadow-xl border-radius-xl">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/1e/8b/16/oliv-restaurante.jpg?w=600&h=400&s=1" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
+                    </a>
+                </div>
+                <div class="card-body px-1 pb-0">
+                    <div class="row align-items-center">
+                        <div class="col-9 d-flex align-items-center">
+                            <a href="javascript:;">
+                                <h5 class="mb-0 text-break">NOME DA EMPRESA</h5>
                             </a>
                         </div>
-                        <div class="card-body px-1 pb-0">
-                            <div class="row align-items-center">
-                                <div class="col-9 d-flex align-items-center">
-                                    <a href="javascript:;">
-                                        <h5 class="mb-0 text-break">NOME DA EMPRESA</h5>
-                                    </a>
-                                </div>
-                                <div class="col-3 d-flex justify-content-center">
-                                    <div class="input-group">
-                                        <button class="btn btn-lg btn-icon-only btn-rounded btn-outline-primary mb-0" onclick="novoPremio()">
-                                            <strong>1</strong>
-                                        </button>
-                                    </div>
-                                </div>
+                        <div class="col-3 d-flex justify-content-center">
+                            <div class="input-group">
+                                <button class="btn btn-lg btn-icon-only btn-rounded btn-outline-primary mb-0" onclick="novoPremio()">
+                                    <strong>1</strong>
+                                </button>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
