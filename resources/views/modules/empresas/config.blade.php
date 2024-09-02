@@ -118,17 +118,14 @@
             <form id="form-pontuacao-premio" class="modal-body">
                 <div class="row d-flex align-items-center">
                     <div class="col-3 mt-3">
-                        <div class="input-group">
-                            <button name="indicador-pontuacao" id="btnIndicadorPontuacao" class="btn btn-lg btn-icon-only btn-rounded btn-outline-primary mb-0">
-                                <strong></strong>
-                            </button>
+                        <div id="indicador-pontuacao" class="input-group">
                         </div>
                     </div>
                     <div class="col-9">
                         <label for="descricao" class="form-label">Prêmio</label>
                         <div class="input-group">
-                            <input id="descricao" name="descricao" class="form-control" type="text" placeholder="Alec" required="required">
-                            <input name="_id" class="form-control" type="hidden" placeholder="Alec" required="required">
+                            <input id="descricao" name="descricao" class="form-control" type="text" placeholder="Insira o prêmio aqui!" required="required">
+                            <input name="pontuacao" class="form-control" type="hidden" placeholder="Alec" required="required">
                         </div>
                     </div>
                 </div>
@@ -137,7 +134,7 @@
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Excluir pontuação</button>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Excluir prêmio</button>
                 <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Mudar de número</button>
-                <button type="button" class="btn btn-primary">Salvar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="registrarAlteracaoPonto()">Marcar prêmio</button>
             </div>
         </div>
     </div>
@@ -147,6 +144,7 @@
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
+    var lastPontuacao = 0;
     function carregaDados(){
         $.ajax({
             type: 'GET',
@@ -173,26 +171,70 @@
             divCartao.append(`
             <div class="col-3 mt-3">
                 <div class="input-group">
-                    <button class="btn btn-lg btn-icon-only btn-rounded ${type} mb-0" type="button" onclick="novoPremio('${value.pontos}', '${value.descricao}', '${retorno._id}')"><strong>${value.pontos}</strong></button>
+                    <button class="btn btn-lg btn-icon-only btn-rounded ${type} mb-0 button-activate" type="button" onclick="novoPremio('${value.pontos}')"><strong>${value.pontos}</strong></button>
                 </div>
+                <input type="hidden" name="pontuacao-${value.pontos}" value="${value.pontos}">
+                <input type="hidden" name="tipo-${value.pontos}" value="${value.premiacao}">
+                <input type="hidden" name="descricao-pontuacao-${value.pontos}" value="${value.descricao}">
             </div>`);
+
+            lastPontuacao++
         }
         divCartao.append(`
         <div class="col-3 mt-3">
             <div class="input-group">
-                <button class="btn btn-lg btn-icon-only btn-rounded btn-outline-secondary mb-0" type="button" onclick="novoPonto()"><strong>+</strong></button>
+                <button class="btn btn-lg btn-icon-only btn-rounded btn-outline-secondary mb-0 button-activate" type="button" onclick="novoPonto()"><strong>+</strong></button>
             </div>
         </div>`)
     }
-    function novoPremio(valor, descricao, idEmpresa){
-        $('#form-pontuacao-premio input[name="indicador-pontuacao"]').text(`<strong>${valor}</strong>`);
+    function novoPremio(valor){
+        let descricao = $(`#div-cartao-pontos input[name="descricao-pontuacao-${valor}"]`).val();
+        console.log(descricao)
+        $('#form-pontuacao-premio div[id="indicador-pontuacao"]').html('').append(`
+            <button name="indicador-pontuacao" id="btnIndicadorPontuacao" class="btn btn-lg btn-icon-only btn-rounded btn-outline-primary mb-0 button-activate">
+                <strong>${valor}</strong>
+            </button>`);
         $('#form-pontuacao-premio input[name="descricao"]').val(descricao);
-        $('#form-pontuacao-premio input[name="_id"]').val(idEmpresa);
+        $('#form-pontuacao-premio input[name="pontuacao"]').val(valor);
         $('#modal-pontos-cartao').modal('show');
     }
-    function novoPonto(){
-        console.log('abrir Modal')
+    function registrarAlteracaoPonto(){
+        let pontuacao = $('#form-pontuacao-premio input[name="pontuacao"]').val();
+        let descricao = $('#form-pontuacao-premio input[name="descricao"]').val();
+        $(`#div-cartao-pontos input[name="tipo-${pontuacao}"]`).val('true')
+        $(`#div-cartao-pontos input[name="descricao-pontuacao-${pontuacao}"]`).val(descricao)
     }
+    function novoPonto() {
+        let novaPontuacao = lastPontuacao + 1;
+        let divCartao = $('#div-cartao-pontos');
+        let items = divCartao.children('.col-3'); // Seleciona todos os itens com a classe 'col-3'
+
+        // Se houver itens, inserimos o novo item antes do último
+        if (items.length > 0) {
+            items.eq(items.length - 1).before(`
+            <div class="col-3 mt-3">
+                <div class="input-group">
+                    <button class="btn btn-lg btn-icon-only btn-rounded btn-outline-secondary mb-0 button-activate" type="button" onclick="novoPremio('${novaPontuacao}')"><strong>${novaPontuacao}</strong></button>
+                </div>
+                <input type="hidden" name="pontuacao-${novaPontuacao}" value="${novaPontuacao}">
+                <input type="hidden" name="tipo-${novaPontuacao}" value="false">
+                <input type="hidden" name="descricao-pontuacao-${novaPontuacao}" value="">
+            </div>`);
+        } else {
+            // Se não houver itens, simplesmente adiciona ao final
+            divCartao.append(`
+            <div class="col-3 mt-3">
+                <div class="input-group">
+                    <button class="btn btn-lg btn-icon-only btn-rounded btn-outline-secondary mb-0 button-activate" type="button" onclick="novoPremio('${novaPontuacao}')"><strong>${novaPontuacao}</strong></button>
+                </div>
+                <input type="hidden" name="pontuacao-${novaPontuacao}" value="${novaPontuacao}">
+                <input type="hidden" name="tipo-${novaPontuacao}" value="false">
+                <input type="hidden" name="descricao-pontuacao-${novaPontuacao}" value="">
+            </div>`);
+        }
+        lastPontuacao++;
+    }
+
     function cancelarAlteracoes(){
         window.location.assign("{{route('minha-empresa-config.index')}}")
     }
