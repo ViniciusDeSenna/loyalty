@@ -112,34 +112,37 @@
 </form>
 
 <!-- Modal -->
-<div class="modal fade" id="modal-pontos-cartao" tabindex="-1" aria-labelledby="meuModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-pontos-cartao" tabindex="-1" aria-labelledby="modalPontosCartaoLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form id="form-pontuacao-premio" class="modal-body">
                 <div class="row d-flex align-items-center">
                     <div class="col-3 mt-3">
                         <div class="input-group">
-                            <button name="indicador-pontuacao" class="btn btn-lg btn-icon-only btn-rounded btn-outline-primary mb-0"><strong></strong></button>
+                            <button name="indicador-pontuacao" id="btnIndicadorPontuacao" class="btn btn-lg btn-icon-only btn-rounded btn-outline-primary mb-0">
+                                <strong></strong>
+                            </button>
                         </div>
                     </div>
                     <div class="col-9">
-                        <label class="form-label">Prêmio</label>
+                        <label for="descricao" class="form-label">Prêmio</label>
                         <div class="input-group">
-                            <input name="descricao" class="form-control" type="text" placeholder="Alec" required="required">
+                            <input id="descricao" name="descricao" class="form-control" type="text" placeholder="Alec" required="required">
                             <input name="_id" class="form-control" type="hidden" placeholder="Alec" required="required">
                         </div>
                     </div>
                 </div>
             </form>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Excluir pontuação</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Excluir prêmio</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mudar de número</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Excluir pontuação</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Excluir prêmio</button>
+                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Mudar de número</button>
                 <button type="button" class="btn btn-primary">Salvar</button>
             </div>
         </div>
     </div>
 </div>
+
 
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -170,14 +173,14 @@
             divCartao.append(`
             <div class="col-3 mt-3">
                 <div class="input-group">
-                    <button class="btn btn-lg btn-icon-only btn-rounded ${type} mb-0" onclick="novoPremio('${value.pontos}', '${value.descricao}', '${retorno._id}')"><strong>${value.pontos}</strong></button>
+                    <button class="btn btn-lg btn-icon-only btn-rounded ${type} mb-0" type="button" onclick="novoPremio('${value.pontos}', '${value.descricao}', '${retorno._id}')"><strong>${value.pontos}</strong></button>
                 </div>
             </div>`);
         }
         divCartao.append(`
         <div class="col-3 mt-3">
             <div class="input-group">
-                <button class="btn btn-lg btn-icon-only btn-rounded btn-outline-secondary mb-0" onclick="novoPonto()"><strong>+</strong></button>
+                <button class="btn btn-lg btn-icon-only btn-rounded btn-outline-secondary mb-0" type="button" onclick="novoPonto()"><strong>+</strong></button>
             </div>
         </div>`)
     }

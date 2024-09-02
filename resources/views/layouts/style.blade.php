@@ -1,6 +1,6 @@
 <style>
     /* Oculta o conteúdo do body até o carregamento ser completo */
-    body.loading .content {
+    body.loading .main-content {
         display: none;
     }
     body.loading .spinner-container {
