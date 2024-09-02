@@ -17,8 +17,7 @@
     </div>
 </div>
 
-<form class="container-fluid my-3 py-3" id="config-form">
-    <input type="hidden" name="_id">
+<div class="container-fluid my-3 py-3" id="config-form">
     <div class="row mb-5">
         <div class="col-lg-3">
             <div class="card position-sticky top-1">
@@ -71,7 +70,8 @@
             </ul>
         </div>
     </div>
-    <div class="col-lg-9 mt-lg-0 mt-4">
+    <form id="config-empresa" class="col-lg-9 mt-lg-0 mt-4">
+        <input type="hidden" name="_id">
         <div class="card mt-4" id="basic-info">
             <div class="card-header">
                 <h5>Empresa</h5>
@@ -81,7 +81,7 @@
                     <div class="col-12">
                         <label class="form-label">Nome da empresa</label>
                         <div class="input-group">
-                            <input id="firstName" name="nome" class="form-control" type="text" placeholder="Alec" required="required">
+                            <input name="nome" class="form-control" type="text" placeholder="Alec" required="required">
                         </div>
                     </div>
                     <div class="col-sm-12 col-12">
@@ -94,11 +94,10 @@
                         </div>
                     </div>
                 </div>
-                </div>
             </div>
         </div>
-    </div>
-    <div class="col-lg-9 mt-lg-0 mt-2">
+    </form>
+    <form id="config-cartao" class="col-lg-9 mt-lg-0 mt-2">
         <div class="card mt-4" id="basic-info">
             <div class="card-header">
                 <h5>Cartão</h5>
@@ -108,8 +107,8 @@
                 </div>
             </div>
         </div>
-    </div>
-</form>
+    </form>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="modal-pontos-cartao" tabindex="-1" aria-labelledby="modalPontosCartaoLabel" aria-hidden="true">
@@ -234,21 +233,22 @@
         }
         lastPontuacao++;
     }
-
     function cancelarAlteracoes(){
         window.location.assign("{{route('minha-empresa-config.index')}}")
     }
     function salvarAlteracoes(){
-        let dados = $('#config-form').serialize();
         $.ajax({
             type: 'POST',
             url: '{{ route('minha-empresa-config.store') }}',
             data: {
-                "_token": "{{ csrf_token() }}",
-                "dados": dados,
+                'empresa': $('#config-empresa').serialize(),
+                'cartao': $('#config-cartao').serialize()
+            },
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
             success: function(retorno) {
-                console.log(retorno);
+                window.location.assign("{{route('minha-empresa-config.index')}}")
             },
             error: function(retorno) {
                 console.log(retorno);
