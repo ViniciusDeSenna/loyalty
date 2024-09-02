@@ -81,13 +81,13 @@
                         <div class="col-12">
                             <label class="form-label">Nome da empresa</label>
                             <div class="input-group">
-                                <input id="firstName" name="firstName" class="form-control" type="text" placeholder="Alec" required="required" onfocus="focused(this)" onfocusout="defocused(this)">
+                                <input id="firstName" name="nome" class="form-control" type="text" placeholder="Alec" required="required">
                             </div>
                         </div>
                         <div class="col-sm-12 col-12">
                             <label class="form-label mt-4">Classificação</label>
                             <div class="input-group">
-                                <select class="form-select" name="" id="">
+                                <select class="form-select" name="classificacao">
                                     <option value="restaurante">Restaurante</option>
                                     <option value="servicos-gerais">Serviços Gerais</option>
                                 </select>
@@ -104,12 +104,7 @@
                     <h5>Cartão</h5>
                 </div>
                 <div class="card-body pt-0">
-                    <div class="row">
-                        <div class="col-3 mt-3">
-                            <div class="input-group">
-                                <button class="btn btn-lg btn-icon-only btn-rounded btn-outline-primary mb-0" onclick="novoPremio()"><strong>1</strong></button>
-                            </div>
-                        </div>
+                    <div class="row" id="div-cartao-pontos">
                     </div>
                 </div>
             </div>
@@ -123,21 +118,42 @@
         $.ajax({
             type: 'GET',
             url: '{{ route('minha-empresa-config.show', [Auth::user()->id]) }}',
-            data: {"_token": "{{ csrf_token() }}"},
             success: function(retorno) {
-                console.log(retorno);
+                $('#config-form input[name="_id"]').val(retorno._id);
+                $('#config-form input[name="classificacao"]').val(retorno.empresa.classificacao);
+                $('#config-form input[name="nome"]').val(retorno.empresa.nome);
+                carregaCartao(retorno.empresa.cartao);
             },
             error: function(retorno) {
                 console.log(retorno);
             }
         })
     }
-    function carregaCartao(){
-
+    function carregaCartao(cartao){
+        let divCartao = $('#div-cartao-pontos');
+        divCartao.html('');
+        for (const [key, value] of Object.entries(cartao)) {
+            let type = 'btn-outline-secondary';
+            if (value.premiacao === true){
+                type = 'btn-outline-primary';
+            }
+            divCartao.append(`
+            <div class="col-3 mt-3">
+                <div class="input-group">
+                    <button class="btn btn-lg btn-icon-only btn-rounded ${type} mb-0" title="${value.descricao}" onclick="novoPremio()"><strong>${value.pontos}</strong></button>
+                </div>
+            </div>`);
+        }
+        divCartao.append(`
+        <div class="col-3 mt-3">
+            <div class="input-group">
+                <button class="btn btn-lg btn-icon-only btn-rounded btn-outline-secondary mb-0" onclick="novoPonto()"><strong>+</strong></button>
+            </div>
+        </div>`)
     }
-    function novoPremio(){
-
-    }
+    // function novoPremio(){
+    //
+    // }
     function cancelarAlteracoes(){
         window.location.assign("{{route('minha-empresa-config.index')}}")
     }
@@ -161,7 +177,6 @@
     $(document).ready(function() {
         // Função que será chamada quando qualquer evento ocorrer
         function handleEvent() {
-            console.log('teste');
             $('#modal-save').removeClass('d-none');
         }
 

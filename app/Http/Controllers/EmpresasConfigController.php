@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Empresas;
 
@@ -37,11 +38,7 @@ class EmpresasConfigController extends Controller
      */
     public function show(string $id)
     {
-        $empresa = Empresas::query()
-            ->where('_id', '=', $id)
-            ->get();
-
-            dd($empresa);
+        return User::find($id);
     }
 
     /**
